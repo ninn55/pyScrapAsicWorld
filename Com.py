@@ -10,21 +10,21 @@ class ChromeDriver(object):
     def __init__(self):
         
         self._driver = None
-        self.setdriver()
-        #self.setheadlessdriver()
-        
+        self._options = webdriver.ChromeOptions()
+        self.usroptionsextension()
         #self.settimeout()
+        self.setdriver()
         
-    def setheadlessdriver(self):
-        self._driver = webdriver.Chrome(chrome_options=self.usroptions())
+    def usroptionsextension(self):
+        self._options.add_argument("load-extension=%(path)s"%{
+            "path": ".\\uBlock\\uBlock0.chromium"
+            })
 
-    def usroptions(self):
-        options = webdriver.ChromeOptions()
-        options.add_argument('headless')
-        return options
+    def usroptionsheadless(self):
+        self._options.add_argument('headless')
 
     def setdriver(self):
-        self._driver = webdriver.Chrome()
+        self._driver = webdriver.Chrome(chrome_options=self._options)
 
     def settimeout(self):
         if self._driver == None:
