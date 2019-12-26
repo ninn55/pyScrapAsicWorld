@@ -1,7 +1,7 @@
 from selenium import webdriver
 
 global MaxDepth
-MaxDepth = 0
+MaxDepth = 2
 
 global DataDir
 DataDir = "./data"

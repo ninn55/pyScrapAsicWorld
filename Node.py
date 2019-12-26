@@ -3,6 +3,7 @@ import urllib
 from bs4 import BeautifulSoup
 from functools import wraps 
 from Com import *
+import uuid
 
 #Parent class
 class Node(object): 
@@ -19,6 +20,7 @@ class Node(object):
         self._childnodes = []
         self._parentnode = None #None for root node
         self._depth = 0
+        self._id = str(uuid.uuid1()).split("-")[0]
 
         self.url = usrurl
         self.parentnode = prntnode
@@ -163,8 +165,7 @@ class Node(object):
                 ret =  func(self, *args, **kwargs)
                 return ret
         return wrapper
-            
-
+    
     #deleter
     def __del__(self):
         del self._url

@@ -11,7 +11,7 @@ class NodeAsicWorld(Node):
         super(NodeAsicWorld, self).__init__(usrurl, prntnode=prntnode)
         self.filename = "%(depth)s_%(url)s"%{
                     "depth":self.depth,
-                    "url": str(uuid.uuid1()).split("-")[0],
+                    "url": self._id,
         }
         self.driver = chromedriver.getdriver()
         
