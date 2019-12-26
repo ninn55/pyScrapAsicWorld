@@ -1,4 +1,5 @@
 from selenium import webdriver
+import os
 
 global MaxDepth
 MaxDepth = 2
@@ -17,7 +18,7 @@ class ChromeDriver(object):
         
     def usroptionsextension(self):
         self._options.add_argument("load-extension=%(path)s"%{
-            "path": ".\\uBlock\\uBlock0.chromium"
+            "path": os.path.abspath(".\\uBlock\\uBlock0.chromium")
             })
 
     def usroptionsheadless(self):
