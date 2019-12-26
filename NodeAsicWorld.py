@@ -24,12 +24,12 @@ class NodeAsicWorld(Node):
     def parsechild(self):
         if self.isneutered == True:
             return
-        urllst = []
+        urllst = set()
         for i in self.content.find_all('a'):
-            if i.b == None or i["href"] == None:
+            if "google.com" in i["href"] or i["href"] == None:
                 continue
-            tempurl = urljoin(self.url, i["href"])
-            urllst.append(tempurl) 
+            tempurl = urljoin(self.url, i["href"].split("#")[0])
+            urllst.add(tempurl) 
         
         for i in urllst:
             temp = NodeAsicWorld(i, self)
